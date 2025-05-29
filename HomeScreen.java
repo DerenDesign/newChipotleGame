@@ -13,7 +13,7 @@ public class HomeScreen {
 	
 	
 	HomeScreen(){
-		
+		panel = new JPanel();
 		frame = new JFrame("Chipotle Vault");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 750);
@@ -22,7 +22,7 @@ public class HomeScreen {
        
         
 		
-		chipotleBackground = new ImageIcon("images/HomePage.jpg");
+		chipotleBackground = new ImageIcon("H:\\git\\newChipotleGame\\images\\HomePage.jpg");
 		background = new JLabel(chipotleBackground);
 		
 		
@@ -32,7 +32,7 @@ public class HomeScreen {
 		
 		
 		
-		frame.getContentPane().add(panel);
+		frame.add(panel);
 		frame.setVisible(true);
 		
 	}

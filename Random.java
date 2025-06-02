@@ -9,7 +9,7 @@ public class Random {
 
     public Random() {
 		int numIngredients = (int)(Math.random() * ALL_INGREDIENTS.length) + 1;
-        correctIngredients = new String[numIngredients];
+        correctIngredients = new String[3];
         boolean[] used = new boolean[ALL_INGREDIENTS.length]; // Track used indices
         int selected = 0;
 

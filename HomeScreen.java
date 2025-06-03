@@ -84,8 +84,7 @@ public class HomeScreen {
                     if (x > 400 && x < 480 && y > 700 && y < 750) {
                         String[] correct = random.getCorrectIngredients();
                         boolean hasIncorrect = false;
-                        // Check for win condition: exactly 3 checkmarks, all correct
-                        if (checkmarks.size() ==correct.length) {
+                        if (checkmarks.size() == 3) {
                             boolean allCorrect = true;
                             for (String ingredient : checkmarks.keySet()) {
                                 boolean isCorrect = false;
@@ -101,13 +100,13 @@ public class HomeScreen {
                                 }
                             }
                             if (allCorrect) {
-                                // Win: show WinScreen.png
+                                
                                 panel.removeAll();
                                 ImageIcon winImage = new ImageIcon("images/WinScreen.png");
                                 background.setIcon(winImage);
                                 background.setBounds(0, 0, 500, 780);
                                 panel.add(background);
-                                isPlaying = false; // Stop further clicks
+                                isPlaying = false; 
                                 panel.revalidate();
                                 panel.repaint();
                                 frame.revalidate();
@@ -117,7 +116,7 @@ public class HomeScreen {
                                     "Congratulations! You guessed the correct ingredients: " + 
                                     String.join(", ", correct)
                                 );
-                                System.out.println("Win condition met");
+                                
                                 return;
                             }
                         }
@@ -170,67 +169,67 @@ public class HomeScreen {
                         }
                     }
                     // Ingredient selection areas
-                    if (x > 442 && x < 496 && y > 578 && y < 606) {
+                    if (x > 434 && x < 484 && y > 534 && y < 561) {
                         System.out.println("No Rice");
                         addCheckmark(x, y, "No Rice");
                     }
-                    if (x > 371 && x < 430 && y > 545 && y < 573) {
+                    if (x > 371 && x < 424 && y > 534 && y < 557) {
                         System.out.println("Black Beans");
                         addCheckmark(x, y, "Black Beans");
                     }
-                    if (x > 308 && x < 362 && y > 547 && y < 573) {
+                    if (x > 300 && x < 356 && y > 530 && y < 559) {
                         System.out.println("Pinto Beans");
                         addCheckmark(x, y, "Pinto Beans");
                     }
-                    if (x > 374 && x < 430 && y > 578 && y < 610) {
+                    if (x > 371 && x < 424 && y > 564 && y < 594) {
                         System.out.println("Veggies");
                         addCheckmark(x, y, "Veggies");
                     }
-                    if (x > 308 && x < 362 && y > 579 && y < 609) {
+                    if (x > 301 && x < 356 && y > 563 && y < 592) {
                         System.out.println("Beef Barbocoa");
                         addCheckmark(x, y, "Beef Barbocoa");
                     }
-                    if (x > 239 && x < 291 && y > 546 && y < 572) {
+                    if (x > 235 && x < 287 && y > 532 && y < 559) {
                         System.out.println("Chicken");
                         addCheckmark(x, y, "Chicken");
                     }
-                    if (x > 239 && x < 293 && y > 582 && y < 604) {
+                    if (x > 235 && x < 286 && y > 565 && y < 592) {
                         System.out.println("Sofritas");
                         addCheckmark(x, y, "Sofritas");
                     }
-                    if (x > 238 && x < 291 && y > 610 && y < 639) {
+                    if (x > 234 && x < 290 && y > 596 && y < 624) {
                         System.out.println("Carnitas");
                         addCheckmark(x, y, "Carnitas");
                     }
-                    if (x > 180 && x < 210 && y > 551 && y < 605) {
+                    if (x > 175 && x < 203 && y > 536 && y < 590) {
                         System.out.println("Mild");
                         addCheckmark(x, y, "Mild");
                     }
-                    if (x > 150 && x < 177 && y > 578 && y < 605) {
+                    if (x > 142 && x < 169 && y > 565 && y < 587) {
                         System.out.println("Spicy1");
                         addCheckmark(x, y, "Spicy1");
                     }
-                    if (x > 147 && x < 177 && y > 550 && y < 574) {
+                    if (x > 143 && x < 171 && y > 536 && y < 560) {
                         System.out.println("Spicy2");
                         addCheckmark(x, y, "Spicy2");
                     }
-                    if (x > 118 && x < 145 && y > 580 && y < 604) {
+                    if (x > 111 && x < 139 && y > 560 && y < 588) {
                         System.out.println("Corn");
                         addCheckmark(x, y, "Corn");
                     }
-                    if (x > 116 && x < 145 && y > 551 && y < 576) {
+                    if (x > 106 && x < 140 && y > 538 && y < 561) {
                         System.out.println("Sour Cream");
                         addCheckmark(x, y, "Sour Cream");
                     }
-                    if (x > 88 && x < 115 && y > 553 && y < 602) {
+                    if (x > 75 && x < 107 && y > 538 && y < 588) {
                         System.out.println("Cheese");
                         addCheckmark(x, y, "Cheese");
                     }
-                    if (x > 54 && x < 82 && y > 550 && y < 603) {
+                    if (x > 47 && x < 74 && y > 535 && y < 588) {
                         System.out.println("Guac");
                         addCheckmark(x, y, "Guac");
                     }
-                    if (x > 22 && x < 49 && y > 550 && y < 604) {
+                    if (x > 16 && x < 44 && y > 536 && y < 589) {
                         System.out.println("Lettuce");
                         addCheckmark(x, y, "Lettuce");
                     }

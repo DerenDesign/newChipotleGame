@@ -72,10 +72,11 @@ public class HomeScreen {
                     ImageIcon heartIcon = new ImageIcon("images/WhiteHeart.png");
                     for (int i = 0; i < hearts; i++) {
                         JLabel heart = new JLabel(heartIcon);
-                        heart.setBounds(50 + (i * 60), 50, heartIcon.getIconWidth(), heartIcon.getIconHeight());
+                        heart.setBounds(50 + (i * 125), 350, heartIcon.getIconWidth(), heartIcon.getIconHeight());
                         heartLabels[i] = heart; 
                         panel.add(heart);
                     }
+                    panel.setComponentZOrder(background, panel.getComponentCount() - 1);
 
                     panel.revalidate();
                     panel.repaint();

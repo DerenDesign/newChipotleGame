@@ -2,7 +2,7 @@ public class Random {
 
     private String[] correctIngredients;
     private static final String[] ALL_INGREDIENTS = {
-        "No Rice", "Black Beans", "Pinto Beans", "Veggies", "Beef Barbocoa",
+         "Black Beans", "Pinto Beans", "Veggies", "Beef Barbocoa",
         "Chicken", "Sofritas", "Carnitas", "Mild", "Spicy1", "Spicy2",
         "Corn", "Sour Cream", "Cheese", "Guac", "Lettuce"
     };

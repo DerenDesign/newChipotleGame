@@ -1,15 +1,16 @@
 public class Random {
 
     private String[] correctIngredients;
-    public static final String[] ALL_INGREDIENTS = {
-        "No Rice", "Black Beans", "Pinto Beans", "Veggies", "Beef Barbacoa",
+    private static final String[] ALL_INGREDIENTS = {
+        "No Rice", "Black Beans", "Pinto Beans", "Veggies", "Beef Barbocoa",
         "Chicken", "Sofritas", "Carnitas", "Mild", "Spicy1", "Spicy2",
         "Corn", "Sour Cream", "Cheese", "Guac", "Lettuce"
     };
 
     public Random() {
+		//int numIngredients = (int)(Math.random() * ALL_INGREDIENTS.length) + 1;
         correctIngredients = new String[3];
-        boolean[] used = new boolean[ALL_INGREDIENTS.length];
+        boolean[] used = new boolean[ALL_INGREDIENTS.length]; // Track used indices
         int selected = 0;
 
         while (selected < 3) {
@@ -21,6 +22,7 @@ public class Random {
             }
         }
 
+        // Debug output to verify selection
         System.out.println("Random ingredients: " + 
             correctIngredients[0] + ", " + 
             correctIngredients[1] + ", " + 

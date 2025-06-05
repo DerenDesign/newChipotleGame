@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -5,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -101,10 +105,26 @@ public class HomeScreen {
                             }
                             if (allCorrect) {
                                 
+                                String code = "";
+                                int length = 5;
+                        
+                                for (int i = 0; i < length; i++) {
+                                    int rand = (int)(Math.random() * 26); 
+                                    char letter = (char)('A' + rand);     
+                                    code += letter;
+                                }
+                                JLabel codeLabel = new JLabel(code, SwingConstants.CENTER);
+                                codeLabel.setFont(new Font("Arial", Font.BOLD, 40)); // Set font and size
+                                codeLabel.setForeground(Color.WHITE); // Set color (white for visibility)
+
+                                codeLabel.setBounds(0, 500, 500, 100); // x, y, width, height
+                        
+
                                 panel.removeAll();
                                 ImageIcon winImage = new ImageIcon("images/WinScreen.png");
                                 background.setIcon(winImage);
                                 background.setBounds(0, 0, 500, 780);
+                                panel.add(codeLabel);
                                 panel.add(background);
                                 isPlaying = false; 
                                 panel.revalidate();

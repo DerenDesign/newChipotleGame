@@ -9,11 +9,11 @@ public class Random {
 
     public Random() {
 		//int numIngredients = (int)(Math.random() * ALL_INGREDIENTS.length) + 1;
-        correctIngredients = new String[3];
+        correctIngredients = new String[5];
         boolean[] used = new boolean[ALL_INGREDIENTS.length]; // Track used indices
         int selected = 0;
 
-        while (selected < 3) {
+        while (selected < 5) {
             int index = (int)(Math.random() * ALL_INGREDIENTS.length);
             if (!used[index]) {
                 correctIngredients[selected] = ALL_INGREDIENTS[index];
@@ -26,7 +26,10 @@ public class Random {
         System.out.println("Random ingredients: " + 
             correctIngredients[0] + ", " + 
             correctIngredients[1] + ", " + 
-            correctIngredients[2]);
+            correctIngredients[2] + "," + 
+            correctIngredients[3] + ", " + 
+            correctIngredients[4] 
+             );
     }
 
     public String[] getCorrectIngredients() {

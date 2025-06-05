@@ -121,7 +121,7 @@ public class HomeScreen {
                     if (x > 400 && x < 480 && y > 700 && y < 750) {
                         String[] correct = random.getCorrectIngredients();
                         boolean hasIncorrect = false;
-                        if (checkmarks.size() == 3) {
+                        if (checkmarks.size() == 5) {
                             boolean allCorrect = true;
                             for (String ingredient : checkmarks.keySet()) {
                                 boolean isCorrect = false;

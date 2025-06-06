@@ -1,3 +1,4 @@
+package src;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GamePlay {
-
+    //instance variables
     public JFrame frame;
     public JPanel panel;
     private JLabel background;
@@ -27,8 +28,9 @@ public class GamePlay {
     private Map<String, String> ingredientCategories;
     private Map<String, Integer> categoryLimits;
     private Map<String, Integer> categoryCounts;
-
+    //default constructor
     GamePlay() {
+        //setting up game variables and frame 
         isPlaying = false;
         checkmarks = new HashMap<>();
         hearts = 3;
@@ -47,7 +49,7 @@ public class GamePlay {
 
         panel.add(background);
 
-
+        // Setting up ingredient categories and limits
         ingredientCategories = new HashMap<>();
         categoryLimits = new HashMap<>();
         categoryCounts = new HashMap<>();
@@ -69,34 +71,37 @@ public class GamePlay {
         categoryCounts.put("Beans", 0);
         categoryCounts.put("Salsa", 0);
         categoryCounts.put("Meat", 0);
-
+        //Mouse Listener for user input
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                //Getting usser input
                 int x = e.getX();
                 int y = e.getY();
                 //System.out.println("X: " + x + " Y: " + y);
-
+                //Help Button
                 if (x > 146 && x < 340 && y > 491 && y < 591 && !isPlaying) {
                     JOptionPane.showMessageDialog(
                             frame,
                             "To win, you must guess the correct combination of ingredients for a Chipotle meal!\n" +
                                     "You only get 3 tries so make the most of it. Winners receive a BOGO chipotle code!");
                 }
-
+                //Play Button
                 if (x > 127 && x < 371 && y > 380 && y < 449 && !isPlaying) {
                     isPlaying = true;
                     random = new Random();
                     panel.removeAll();
                     checkmarks.clear();
+                    // Resetting hearts and category counts
                     for (String k : categoryCounts.keySet()) {
                         categoryCounts.put(k, 0);
                     }
+                    //Adding Game Screen to JFrame
                     ImageIcon gameImage = new ImageIcon("images/Game Screen.png");
                     background.setIcon(gameImage);
                     background.setBounds(0, 0, 500, 780);
                     panel.add(background);
-
+                    //Adding White Hearts
                     ImageIcon heartIcon = new ImageIcon("images/WhiteHeart.png");
                     for (int i = 0; i < hearts; i++) {
                         JLabel heart = new JLabel(heartIcon);
@@ -106,7 +111,7 @@ public class GamePlay {
                     }
                     //Ensure background is on the bottom
                     panel.setComponentZOrder(background, panel.getComponentCount() - 1);
-
+                    //Ensuring frame/panel is updated
                     panel.revalidate();
                     panel.repaint();
                     frame.revalidate();
@@ -117,8 +122,10 @@ public class GamePlay {
                     if (x > 400 && x < 480 && y > 700 && y < 750) {
                         String[] correct = random.getCorrectIngredients();
                         boolean hasIncorrect = false;
+                        // Check if the user has selected 5 ingredients
                         if (checkmarks.size() == 5) {
                             boolean allCorrect = true;
+                            //Check if ingredients match
                             for (String ingredient : checkmarks.keySet()) {
                                 boolean isCorrect = false;
                                 for (String correctIngredient : correct) {
@@ -133,15 +140,16 @@ public class GamePlay {
                                 }
                             }
                             if (allCorrect) {
+                                //If user has won, generate a code
                                 String code = "";
                                 int length = 5;
-
+                                // Generate a random 5-letter code
                                 for (int i = 0; i < length; i++) {
                                     int rand = (int) (Math.random() * 26);
                                     char letter = (char) ('A' + rand);
                                     code += letter;
                                 }
-
+                                //Text and formatting for random generated code
                                 JLabel codeLabel = new JLabel(code, SwingConstants.CENTER);
                                 codeLabel.setFont(new Font("Arial", Font.BOLD, 40));
                                 codeLabel.setForeground(Color.WHITE);
@@ -158,6 +166,7 @@ public class GamePlay {
                                 panel.repaint();
                                 frame.revalidate();
                                 frame.repaint();
+                                //Win message
                                 JOptionPane.showMessageDialog(
                                         frame,
                                         "Congratulations! The corrent ingredients were: " +
@@ -165,7 +174,7 @@ public class GamePlay {
                                 return;
                             }
                         }
-
+                        // If the user has not selected 5 ingredients, check for incorrect selections
                         for (String ingredient : new HashMap<>(checkmarks).keySet()) {
                             boolean isCorrect = false;
                             for (String rightIngredient : correct) {
@@ -174,6 +183,7 @@ public class GamePlay {
                                     break;
                                 }
                             }
+                            // If the ingredient is incorrect, remove the checkmark and update hearts
                             if (!isCorrect) {
                                 panel.remove(checkmarks.get(ingredient));
                                 checkmarks.remove(ingredient);
@@ -184,15 +194,15 @@ public class GamePlay {
                                 hasIncorrect = true;
                             }
                         }
-
+                        // Update hearts based on incorrect selections
                         if (hasIncorrect && hearts > 0) {
                             hearts--;
                             panel.remove(heartLabels[hearts]);
                             heartLabels[hearts] = null;
                         }
-
+                        //If there are no hearts, game is over
                         if (hearts == 0) {
-
+                            //Show GameOver screen
                             panel.removeAll();
                             ImageIcon gameOverImage = new ImageIcon("images/GameOver.png");
                             background.setIcon(gameOverImage);
@@ -239,11 +249,12 @@ public class GamePlay {
         frame.add(panel);
         frame.setVisible(true);
     }
-
+    // Method to add or remove checkmarks based on user input
     private void addCheckmark(int x, int y, String ingredient) {
         String category = ingredientCategories.getOrDefault(ingredient, "Other");
-
+        //Check if ingreident is already selected
         if (checkmarks.containsKey(ingredient)) {
+            //If it is, remove the checkmark
             panel.remove(checkmarks.get(ingredient));
             checkmarks.remove(ingredient);
             if (categoryCounts.containsKey(category)) {
@@ -256,20 +267,22 @@ public class GamePlay {
             System.out.println("Checkmark removed for " + ingredient);
             return;
         }
-
+        //If it not seleceted, check if it exceeds the  limit
         if (categoryCounts.containsKey(category)) {
             int currentCount = categoryCounts.get(category);
             int maxCount = categoryLimits.getOrDefault(category, Integer.MAX_VALUE);
+            //If it does, show a message and return
             if (currentCount >= maxCount) {
                 JOptionPane.showMessageDialog(frame, "You can only choose " + maxCount + " from the " + category + " category.");
                 return;
             }
         }
-
+        //Check mark icom
         ImageIcon checkmarkIcon = new ImageIcon("images/Chec.png");
         JLabel checkmark = new JLabel(checkmarkIcon);
         int width = checkmarkIcon.getIconWidth();
         int height = checkmarkIcon.getIconHeight();
+        //Adjust position of check mark based of user input
         int adjX = Math.max(0, Math.min(x - width / 2, 500 - width));
         int adjY = Math.max(0, Math.min(y - height / 2, 780 - height));
         checkmark.setBounds(adjX, adjY, width, height);

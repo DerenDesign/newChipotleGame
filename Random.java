@@ -8,8 +8,8 @@ public class Random {
     };
 
     public Random() {
-		//int numIngredients = (int)(Math.random() * ALL_INGREDIENTS.length) + 1;
-        correctIngredients = new String[5];
+		
+        correctIngredients = new String[5]; // Can change to any number of ingredients
         boolean[] used = new boolean[ALL_INGREDIENTS.length]; // Track used indices
         int selected = 0;
 
@@ -22,14 +22,14 @@ public class Random {
             }
         }
 
-        // Debug output to verify selection
-        System.out.println("Random ingredients: " + 
-            correctIngredients[0] + ", " + 
-            correctIngredients[1] + ", " + 
-            correctIngredients[2] + "," + 
-            correctIngredients[3] + ", " + 
-            correctIngredients[4] 
-             );
+        
+        // System.out.println("Random ingredients: " + 
+        //     correctIngredients[0] + ", " + 
+        //     correctIngredients[1] + ", " + 
+        //     correctIngredients[2] + "," + 
+        //     correctIngredients[3] + ", " + 
+        //     correctIngredients[4] 
+        //      );
     }
 
     public String[] getCorrectIngredients() {
